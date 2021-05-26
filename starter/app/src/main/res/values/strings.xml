@@ -4,4 +4,24 @@
 
     <!-- TODO: Add necessary string values -->
 
+    <string name="logo_screen_upcoming_elections">UPCOMING ELECTIONS</string>
+    <string name="logo_screen_find_representatives">FIND MY REPRESENTATIVES</string>
+    <string name="home_screen_logo_desc">Home Screen Logo</string>
+    <string name="upcoming_elections">Upcoming Elections</string>
+    <string name="loadingImage">Loading Image</string>
+    <string name="saved_elections">Saved Elections</string>
+    <string name="correspondence_address">Correspondence Address</string>
+    <string name="election_information">Election Information</string>
+    <string name="voting_locations">Voting Locations</string>
+    <string name="ballot_information">Ballot Information</string>
+    <string name="follow_election">Follow Election</string>
+    <string name="unfollow_election">Unfollow Election</string>
+    <string name="find_my_representatives">Find My Representatives</string>
+    <string name="use_my_location">Use My Location</string>
+    <string name="representative_search">Representative Search</string>
+    <string name="address_line_1">Address Line 1</string>
+    <string name="address_line_2">Address Line 2</string>
+    <string name="city">City</string>
+    <string name="zip">Zip</string>
+    <string name="my_representatives">My Representatives</string>
 </resources>

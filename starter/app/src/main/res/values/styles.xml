@@ -2,7 +2,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -10,5 +10,20 @@
     </style>
 
     <!-- TODO: Add necessary styles -->
+    <style name="electionNameStyle" parent="TextAppearance.AppCompat.Subhead">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/textSize_medium</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="electionHeadingStyle" parent="TextAppearance.AppCompat.Headline">
+        <item name = "android:textStyle">bold</item>
+        <item name= "android:textSize">@dimen/textSize_large </item>
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+    <style name="electionDateStyle" parent="TextAppearance.AppCompat.Title">
+        <item name="android:textSize">@dimen/textSize_small</item>
+        <item name="android:textColor">@color/gray50</item>
+    </style>
 
 </resources>

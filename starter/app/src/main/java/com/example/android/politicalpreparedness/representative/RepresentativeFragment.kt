@@ -6,8 +6,17 @@ import android.location.Location
 import android.os.Bundle
 import android.view.*
 import android.view.inputmethod.InputMethodManager
+import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import com.example.android.politicalpreparedness.R
+import com.example.android.politicalpreparedness.databinding.FragmentRepresentativeBinding
+import com.example.android.politicalpreparedness.election.ElectionsViewModel
+import com.example.android.politicalpreparedness.election.ElectionsViewModelFactory
 import com.example.android.politicalpreparedness.network.models.Address
+import com.example.android.politicalpreparedness.representative.adapter.RepresentativeListAdapter
+import com.example.android.politicalpreparedness.representative.adapter.RepresentativeListener
 import java.util.Locale
 
 class DetailFragment : Fragment() {
@@ -17,18 +26,49 @@ class DetailFragment : Fragment() {
     }
 
     //TODO: Declare ViewModel
+    val viewModel: RepresentativeViewModel by lazy {
+        val activity = requireNotNull(this.activity){
+            "You can only access the viewModel after onViewCreated()"
+        }
+        ViewModelProvider(this, RepresentativeViewModelFactory(activity.application)).get(RepresentativeViewModel::class.java)
+    }
 
     override fun onCreateView(inflater: LayoutInflater,
                               container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+                              savedInstanceState: Bundle?): View{
 
-        //TODO: Establish bindings
-
+        //Establish bindings
+        val binding = FragmentRepresentativeBinding.inflate(inflater)
+        binding.lifecycleOwner = this
+        binding.viewModel = viewModel
         //TODO: Define and assign Representative adapter
+        val representativeAdapter = RepresentativeListAdapter(RepresentativeListener { representative ->
 
+
+        })
         //TODO: Populate Representative adapter
+        binding.representativeList.adapter = representativeAdapter
+
+        // setting spinner adapter
+        ArrayAdapter.createFromResource(requireActivity(), R.array.states, android.R.layout.simple_spinner_item)
+                .also{
+                    adapter ->
+                    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                    binding.state.adapter = adapter
+                }
 
         //TODO: Establish button listeners for field and location search
+        binding.buttonSearch.setOnClickListener {
+            viewModel.getRepresentativesByAddress()
+        }
+
+        viewModel.representatives.observe(viewLifecycleOwner, Observer { representatives ->
+            representatives?.let{
+                representativeAdapter.submitList(representatives)
+            }
+        })
+
+        return binding.root
 
     }
 
@@ -48,6 +88,8 @@ class DetailFragment : Fragment() {
 
     private fun isPermissionGranted() : Boolean {
         //TODO: Check if permission is already granted and return (true = granted, false = denied/other)
+        //TODO: temporarily returning true...need to change
+        return true
     }
 
     private fun getLocation() {
