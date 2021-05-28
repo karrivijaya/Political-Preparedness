@@ -15,7 +15,7 @@ import com.example.android.politicalpreparedness.databinding.RepresentativeListI
 import com.example.android.politicalpreparedness.network.models.Channel
 import com.example.android.politicalpreparedness.representative.model.Representative
 
-class RepresentativeListAdapter(private val clickListener: RepresentativeListener): ListAdapter<Representative, RepresentativeViewHolder>(RepresentativeDiffCallback){
+class RepresentativeListAdapter(): ListAdapter<Representative, RepresentativeViewHolder>(RepresentativeDiffCallback){
     companion object RepresentativeDiffCallback: DiffUtil.ItemCallback<Representative>(){
         override fun areItemsTheSame(oldItem: Representative, newItem: Representative): Boolean {
             return oldItem.office == newItem.office && oldItem.official == newItem.official
@@ -94,8 +94,4 @@ class RepresentativeViewHolder(val binding: RepresentativeListItemBinding): Recy
         itemView.context.startActivity(intent)
     }
 
-}
-//TODO: Create RepresentativeListener
-class RepresentativeListener(val clickListener: (representative:Representative) -> Unit){
-    fun onClick(representative:Representative) = clickListener(representative)
 }
