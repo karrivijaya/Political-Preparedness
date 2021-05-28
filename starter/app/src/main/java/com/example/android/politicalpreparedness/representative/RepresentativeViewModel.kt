@@ -4,11 +4,18 @@ import android.app.Application
 import android.util.Log
 import androidx.lifecycle.*
 import com.example.android.politicalpreparedness.database.ElectionDatabase
+import com.example.android.politicalpreparedness.election.ApiStatus
 import com.example.android.politicalpreparedness.network.models.Address
 import com.example.android.politicalpreparedness.repository.CivicRepository
 import com.example.android.politicalpreparedness.representative.model.Representative
 import kotlinx.coroutines.launch
 import java.lang.Exception
+
+enum class RepresentativeApiStatus{
+    LOADING,
+    DONE,
+    ERROR
+}
 
 class RepresentativeViewModel(private val app: Application): AndroidViewModel(app) {
 
@@ -24,37 +31,34 @@ class RepresentativeViewModel(private val app: Application): AndroidViewModel(ap
     val address: LiveData<Address>
         get() = _address
 
-    private val _addressLine1 = MutableLiveData<String?>()
-    val addressLine1: LiveData<String?>
-        get() = _addressLine1
+    val addressLine1 = MutableLiveData<String>()
 
-    private val _addressLine2 = MutableLiveData<String?>()
-    val addressLine2: LiveData<String?>
-        get() = _addressLine2
+    val addressLine2 = MutableLiveData<String>()
 
-    private val _city = MutableLiveData<String?>()
-    val city: LiveData<String?>
-        get() = _city
+    val city = MutableLiveData<String>()
 
-    private val _state = MutableLiveData<String?>()
-    val state: LiveData<String?>
-        get() = _state
+    val state = MutableLiveData<String>()
 
-    private val _zip = MutableLiveData<String?>()
-    val zip:LiveData<String?>
-        get() = _zip
+    val zip = MutableLiveData<String>()
+
+    private val _representativeApiStatus = MutableLiveData<RepresentativeApiStatus>()
+    val representativeApiStatus: LiveData<RepresentativeApiStatus>
+    get() = _representativeApiStatus
 
     //function to fetch representatives from API from a provided address
     fun getRepresentativesByAddress(){
         viewModelScope.launch {
+            _representativeApiStatus.value = RepresentativeApiStatus.LOADING
             try {
                 val address = getAddressFromFields()
                 val representativeResponse = repository.getRepresentativeInfo(address)
                 _representatives.value = representativeResponse?.offices?.flatMap {
                     office -> office.getRepresentatives(representativeResponse?.officials)
                 }
-
+                _representativeApiStatus.value = RepresentativeApiStatus.DONE
             }catch (e:Exception){
+                _representativeApiStatus.value = RepresentativeApiStatus.ERROR
+                _representatives.value = emptyList()
                 e.message?.let { Log.e("RepresentativeViewModel",it)}
             }
         }
@@ -75,11 +79,11 @@ class RepresentativeViewModel(private val app: Application): AndroidViewModel(ap
 
     //TODO: Create function to get address from individual fields
     fun getAddressFromFields(): String{
-        val address =  Address(addressLine1.value?:"",
-                                addressLine2.value,
-                                city.value?:"",
-                                state.value?:"",
-                                zip.value?:"")
+        val address =  Address(addressLine1.value.toString(),
+                                addressLine2.value.toString(),
+                                city.value.toString(),
+                                state.value.toString(),
+                                zip.value.toString())
         _address.value = address
         return address.toFormattedString()
     }

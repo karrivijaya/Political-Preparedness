@@ -25,5 +25,10 @@
         <item name="android:textSize">@dimen/textSize_small</item>
         <item name="android:textColor">@color/gray50</item>
     </style>
+    <style name="representativePartyStyle" parent="TextAppearance.AppCompat.Subhead">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/textSize_small</item>
+        <item name="android:textColor">@color/gray50</item>
+    </style>
 
 </resources>

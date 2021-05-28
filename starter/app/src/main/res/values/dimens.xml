@@ -4,15 +4,16 @@
     <dimen name="dimen_screen_logo">200dp</dimen>
     <dimen name="default_margin">16dp</dimen>
     <dimen name="margin_small">8dp</dimen>
-    <dimen name="image_width">80dp</dimen>
-    <dimen name="image_height">80dp</dimen>
-    <dimen name="image_width_small">40dp</dimen>
-    <dimen name="image_height_small">40dp</dimen>
+    <dimen name="image_width">60dp</dimen>
+    <dimen name="image_height">60dp</dimen>
+    <dimen name="image_width_small">30dp</dimen>
+    <dimen name="image_height_small">30dp</dimen>
     <dimen name="textSize_medium">20sp</dimen>
     <dimen name="textSize_large">26sp</dimen>
     <dimen name="textSize_small">15sp</dimen>
     <dimen name="dimen_loading_wheel">100dp</dimen>
     <dimen name="padding_small">8dp</dimen>
+    <dimen name="list_padding_bottom">32dp</dimen>
 
 
     <!-- TODO: Add necessary dimension values -->s

@@ -6,6 +6,7 @@ import android.location.Location
 import android.os.Bundle
 import android.view.*
 import android.view.inputmethod.InputMethodManager
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -68,6 +69,17 @@ class DetailFragment : Fragment() {
             }
         })
 
+        binding.state.onItemSelectedListener = object: AdapterView.OnItemSelectedListener{
+
+            override fun onItemSelected(adapterView: AdapterView<*>?, view: View?, position: Int, Id: Long) {
+
+                viewModel.state.value = adapterView?.getItemAtPosition(position).toString()
+            }
+
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+                TODO("Not yet implemented")
+            }
+        }
         return binding.root
 
     }

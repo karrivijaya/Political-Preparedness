@@ -16,7 +16,7 @@
     <androidx.constraintlayout.motion.widget.MotionLayout
         android:layout_height="match_parent"
         android:layout_width="match_parent"
-        android:layout_margin="@dimen/margin_small"
+        android:padding="@dimen/margin_small"
         app:layoutDescription="@xml/fragment_representative_scene">
 
         <!-- TODO: Add visual styling and content -->
@@ -72,13 +72,13 @@
         <!-- TODO: Add default values from provided resources  -->
         <!-- TODO: Add data binding value -->
         <!-- TODO: Add visual styling and content -->
-        <Spinner
+        <androidx.appcompat.widget.AppCompatSpinner
             android:id="@+id/state"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:autofillHints=""
             android:inputType="textPostalAddress"
-            android:text="@={viewModel.state}"
+            app:stateValue="@{viewModel.state}"
             app:layout_constraintStart_toEndOf="@id/city"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/city"
@@ -116,7 +116,7 @@
             android:layout_height="wrap_content"
             android:text="@string/use_my_location"
             app:layout_constraintTop_toBottomOf="@id/button_search"
-            motion:layout_editor_absoluteX="105dp" />
+            />
 
         <TextView
             android:id="@+id/representative_title"
@@ -127,28 +127,30 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/button_location" />
 
-        <!-- TODO: Add Representatives RecyclerView -->
+        <!-- Add Representatives RecyclerView -->
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/representative_list"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:paddingBottom="@dimen/list_padding_bottom"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/representative_title"
-            tools:listitem="@layout/representative_list_item"/>
-
-        <!-- TODO: Add visual styling and content -->
-        <TextView
-            android:id="@+id/list_placeholder"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:gravity="center"
-            android:textAlignment="center"
-            android:visibility="gone"
-            motion:visibilityMode="ignore"
-            app:layout_constraintTop_toBottomOf="@id/representative_title"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            tools:listitem="@layout/representative_list_item"
+           />
+        <ImageView
+            android:id="@+id/api_status"
+            android:layout_width="@dimen/dimen_loading_wheel"
+            android:layout_height="@dimen/dimen_loading_wheel"
+            android:layout_marginBottom="@dimen/default_margin"
+            android:padding="@dimen/default_padding"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/representative_list"
+            app:apiStatus="@{viewModel.representativeApiStatus}"
+            android:contentDescription="@string/loadingImage" />
 
     </androidx.constraintlayout.motion.widget.MotionLayout>
 </layout>

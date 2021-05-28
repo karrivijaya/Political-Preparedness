@@ -24,4 +24,9 @@
     <string name="city">City</string>
     <string name="zip">Zip</string>
     <string name="my_representatives">My Representatives</string>
+    <string name="representative_photo">Photo of representative</string>
+    <string name="www_icon_desc">www icon - click to go to the respective website</string>
+    <string name="facebook_icon_desc">facebook icon - click to go to the respective facebook page</string>
+    <string name="twitter_icon_desc">Twitter icon - Click to go to the respective twitter page</string>
+    <string name="errorImage">Problem loading data</string>
 </resources>

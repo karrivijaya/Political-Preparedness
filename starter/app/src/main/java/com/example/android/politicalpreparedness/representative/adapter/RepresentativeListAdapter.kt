@@ -18,13 +18,11 @@ import com.example.android.politicalpreparedness.representative.model.Representa
 class RepresentativeListAdapter(private val clickListener: RepresentativeListener): ListAdapter<Representative, RepresentativeViewHolder>(RepresentativeDiffCallback){
     companion object RepresentativeDiffCallback: DiffUtil.ItemCallback<Representative>(){
         override fun areItemsTheSame(oldItem: Representative, newItem: Representative): Boolean {
-            return oldItem === newItem
+            return oldItem.office == newItem.office && oldItem.official == newItem.official
         }
 
         override fun areContentsTheSame(oldItem: Representative, newItem: Representative): Boolean {
-            //return oldItem.id == newItem.id
-            //TODO: check
-            return true
+            return oldItem == newItem
         }
 
     }

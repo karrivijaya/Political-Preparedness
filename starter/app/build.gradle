@@ -64,6 +64,9 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit: $version_retrofit"
     implementation "com.squareup.retrofit2:converter-moshi:$version_retrofit"
     implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:$version_retrofit_coroutines_adapter"
+    // http profiler interceptor
+    implementation 'com.itkacher.okhttpprofiler:okhttpprofiler:1.0.7'
+
 
     // Moshi
     implementation "com.squareup.moshi:moshi:$version_moshi"
@@ -71,7 +74,7 @@ dependencies {
     implementation "com.squareup.moshi:moshi-adapters:$version_moshi"
 
     // Glide
-    //TODO: Add Glide Implementation
+    implementation "com.github.bumptech.glide:glide:$version_glide"
 
     //Room
     implementation "androidx.room:room-runtime:$version_room"
