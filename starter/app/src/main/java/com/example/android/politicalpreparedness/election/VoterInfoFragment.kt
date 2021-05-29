@@ -82,6 +82,7 @@ class VoterInfoFragment : Fragment() {
             else{
                 binding.stateCorrespondenceHeader.visibility = View.GONE
                 binding.addressGroup.visibility = View.GONE
+
             }
 
         })

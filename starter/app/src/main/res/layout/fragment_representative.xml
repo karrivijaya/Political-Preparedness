@@ -151,6 +151,19 @@
             app:layout_constraintTop_toBottomOf="@id/representative_list"
             app:apiStatus="@{viewModel.representativeApiStatus}"
             android:contentDescription="@string/loadingImage" />
+        <TextView
+            android:id="@+id/error_msg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/default_margin"
+            android:gravity="center"
+            style="@style/electionNameStyle"
+            android:textColor="@android:color/holo_red_dark"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/api_status"
+            android:text="@{viewModel.showError}"
+            />
 
     </androidx.constraintlayout.motion.widget.MotionLayout>
 </layout>

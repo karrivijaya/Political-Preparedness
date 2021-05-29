@@ -29,4 +29,10 @@
     <string name="facebook_icon_desc">facebook icon - click to go to the respective facebook page</string>
     <string name="twitter_icon_desc">Twitter icon - Click to go to the respective twitter page</string>
     <string name="errorImage">Problem loading data</string>
+    <string name="permission_needed">Need Permission</string>
+    <string name="location_permission_message">This feature requires you to accept the system to use your location</string>
+    <string name="permission_OK">OK</string>
+    <string name="permission_cancel">CANCEL</string>
+    <string name="location_null">Problem retrieving your location. Please make sure your location is turned on</string>
+    <string name="error_geocoder_address">There is a problem retrieving representatives for your location</string>
 </resources>

@@ -41,6 +41,11 @@ class RepresentativeViewModel(private val app: Application): AndroidViewModel(ap
 
     val zip = MutableLiveData<String>()
 
+    private val _showError = MutableLiveData<String>()
+    val showError: LiveData<String>
+    get() = _showError
+
+
     private val _representativeApiStatus = MutableLiveData<RepresentativeApiStatus>()
     val representativeApiStatus: LiveData<RepresentativeApiStatus>
     get() = _representativeApiStatus
@@ -59,7 +64,10 @@ class RepresentativeViewModel(private val app: Application): AndroidViewModel(ap
             }catch (e:Exception){
                 _representativeApiStatus.value = RepresentativeApiStatus.ERROR
                 _representatives.value = emptyList()
-                e.message?.let { Log.e("RepresentativeViewModel",it)}
+                e.message?.let {
+                    Log.e("RepresentativeViewModel",it)
+                    showErrorRetrievingAddress(it)
+                }
             }
         }
     }
@@ -76,6 +84,10 @@ class RepresentativeViewModel(private val app: Application): AndroidViewModel(ap
      */
 
     //TODO: Create function get address from geo location
+    fun getAddressFromGeoLocation(address:Address){
+        _address.value = address
+        populateAddressFields()
+    }
 
     //TODO: Create function to get address from individual fields
     fun getAddressFromFields(): String{
@@ -88,7 +100,17 @@ class RepresentativeViewModel(private val app: Application): AndroidViewModel(ap
         return address.toFormattedString()
     }
 
+    fun showErrorRetrievingAddress(error: String){
+        _showError.value = error
+        _representatives.value = emptyList()
+        _representativeApiStatus.value = RepresentativeApiStatus.ERROR
+    }
 
-
-
+    private fun populateAddressFields(){
+        addressLine1.value = _address.value?.line1
+        addressLine2.value = _address.value?.line2
+        city.value = _address.value?.city
+        state.value = _address.value?.state
+        zip.value = _address.value?.zip
+    }
 }
