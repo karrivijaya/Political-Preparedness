@@ -14,8 +14,5 @@
     <dimen name="dimen_loading_wheel">100dp</dimen>
     <dimen name="padding_small">8dp</dimen>
     <dimen name="list_padding_bottom">32dp</dimen>
-
-
-    <!-- TODO: Add necessary dimension values -->s
-
+    <dimen name="guide_begin">550dp</dimen>
 </resources>

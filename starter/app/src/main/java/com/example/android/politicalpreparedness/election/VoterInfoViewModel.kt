@@ -44,8 +44,7 @@ class VoterInfoViewModel(database: ElectionDatabase, electionId: Int?, division:
 
     var address = StringBuilder()
 
-
-    //TODO: Add var and methods to populate voter info
+    // Add var and methods to populate voter info
     init{
         displayVoterInfo(electionId, division)
         viewModelScope.launch {
@@ -84,7 +83,6 @@ class VoterInfoViewModel(database: ElectionDatabase, electionId: Int?, division:
             }
         }
     }
-    //TODO: Add var and methods to support loading URLs
 
     fun saveElectionToDatabase(){
         Log.i("VoterInfoViewModel","save election clicked")
@@ -117,8 +115,6 @@ class VoterInfoViewModel(database: ElectionDatabase, electionId: Int?, division:
         }
     }
 
-    //TODO: Add var and methods to save and remove elections to local database
-    //TODO: cont'd -- Populate initial state of save button to reflect proper action based on election saved status
 
     /**
      * Hint: The saved state can be accomplished in multiple ways. It is directly related to how elections are saved/removed from the database.

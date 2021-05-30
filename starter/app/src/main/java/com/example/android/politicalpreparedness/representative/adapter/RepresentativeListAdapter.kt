@@ -43,8 +43,6 @@ class RepresentativeViewHolder(val binding: RepresentativeListItemBinding): Recy
         binding.representative = item
         binding.representativePhoto.setImageResource(R.drawable.ic_profile)
 
-        //TODO: Show social links ** Hint: Use provided helper methods
-        //TODO: Show www link ** Hint: Use provided helper methods
         val channels = item.official.channels
         if(channels != null) {
             showSocialLinks(channels)
@@ -57,7 +55,6 @@ class RepresentativeViewHolder(val binding: RepresentativeListItemBinding): Recy
         binding.executePendingBindings()
     }
 
-    //TODO: Add companion object to inflate ViewHolder (from)
 
     private fun showSocialLinks(channels: List<Channel>) {
         val facebookUrl = getFacebookUrl(channels)

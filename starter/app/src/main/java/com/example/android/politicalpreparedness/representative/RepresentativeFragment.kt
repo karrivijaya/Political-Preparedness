@@ -32,7 +32,7 @@ class DetailFragment : Fragment() {
     private lateinit var fusedLocationClient: FusedLocationProviderClient
 
     companion object {
-        //TODO: Add Constant for Location request
+        // Constant for Location request
         private const val LOCATION_REQUEST_CODE = 20
 
         private const val TAG = "Representative Fragment"
@@ -67,7 +67,7 @@ class DetailFragment : Fragment() {
                     binding.state.adapter = adapter
                 }
 
-        //TODO: Establish button listeners for field and location search
+        // Establish button listeners for field and location search
         binding.buttonSearch.setOnClickListener {
             hideKeyboard()
             viewModel.getRepresentativesByAddress()
@@ -103,7 +103,7 @@ class DetailFragment : Fragment() {
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        //TODO: Handle location permission result to get location on permission granted
+        //Handle location permission result to get location on permission granted
 
         Log.d(TAG, "onRequestPermissionResult")
 
@@ -142,8 +142,7 @@ class DetailFragment : Fragment() {
     }
 
     private fun isPermissionGranted() : Boolean {
-        //TODO: Check if permission is already granted and return (true = granted, false = denied/other)
-        //TODO: temporarily returning true...need to change
+        //Check if permission is already granted and return (true = granted, false = denied/other)
         return PackageManager.PERMISSION_GRANTED ==
                 ActivityCompat.checkSelfPermission(requireContext(),
                         Manifest.permission.ACCESS_FINE_LOCATION)
@@ -153,8 +152,7 @@ class DetailFragment : Fragment() {
     private fun getLocation() {
         Log.d(TAG, "inside getLocation()")
 
-        //TODO: Get location from LocationServices
-        //TODO: The geoCodeLocation method is a helper function to change the lat/long location to a human readable street address
+        // Get location from LocationServices
         fusedLocationClient.lastLocation.addOnSuccessListener { location ->
 
             if (location != null) {

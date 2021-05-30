@@ -9,8 +9,6 @@ import com.example.android.politicalpreparedness.repository.CivicRepository
 import kotlinx.coroutines.launch
 import java.lang.Exception
 
-//TODO: Construct ViewModel and provide election datasource
-
 enum class ApiStatus{
     LOADING,
     DONE,
@@ -31,6 +29,8 @@ class ElectionsViewModel(app:Application): AndroidViewModel(app) {
     val upcomingElections:LiveData<List<Election>>
             get() = _upcomingElections
 
+    //Create live data val for saved elections
+
     var savedElections : LiveData<List<Election>?> = MutableLiveData()
 
     private val _apiStatus = MutableLiveData<ApiStatus>()
@@ -47,9 +47,8 @@ class ElectionsViewModel(app:Application): AndroidViewModel(app) {
     val navigateToSelectedElection: LiveData<Election?>
     get() = _navigateToSelectedElection
 
-    //TODO: Create live data val for saved elections
 
-    //TODO: Create val and functions to populate live data for upcoming elections from the API and saved elections from local database
+    // Create val and functions to populate live data for upcoming elections from the API and saved elections from local database
     init{
         getUpcomingElections()
         getSavedElections()
@@ -87,6 +86,4 @@ class ElectionsViewModel(app:Application): AndroidViewModel(app) {
     fun displayElectionDetailsComplete(){
         _navigateToSelectedElection.value = null
     }
-    //TODO: Create functions to navigate to saved or upcoming election voter info
-
 }

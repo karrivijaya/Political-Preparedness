@@ -5,7 +5,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.android.politicalpreparedness.database.ElectionDatabase
 import com.example.android.politicalpreparedness.network.models.Division
 
-//TODO: Create Factory to generate VoterInfoViewModel with provided election datasource
 class VoterInfoViewModelFactory(private val database: ElectionDatabase, private val electionId: Int?, private val division: Division?): ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(VoterInfoViewModel::class.java)) {

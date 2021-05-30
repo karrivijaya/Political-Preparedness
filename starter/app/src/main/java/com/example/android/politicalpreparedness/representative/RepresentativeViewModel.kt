@@ -83,13 +83,12 @@ class RepresentativeViewModel(private val app: Application): AndroidViewModel(ap
 
      */
 
-    //TODO: Create function get address from geo location
     fun getAddressFromGeoLocation(address:Address){
         _address.value = address
         populateAddressFields()
     }
 
-    //TODO: Create function to get address from individual fields
+    // Create function to get address from individual fields
     fun getAddressFromFields(): String{
         val address =  Address(addressLine1.value.toString(),
                                 addressLine2.value.toString(),

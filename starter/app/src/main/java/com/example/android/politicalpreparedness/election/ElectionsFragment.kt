@@ -29,21 +29,21 @@ class ElectionsFragment: Fragment() {
                               container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
 
-        //TODO: Add ViewModel values and create ViewModel
-
-        //TODO: Add binding values
+        // Add binding values
         val binding = FragmentElectionBinding.inflate(inflater)
         binding.lifecycleOwner = this
 
+        //Add ViewModel values and create ViewModel
+
         binding.electionsViewModel = electionsViewModel
 
-        //TODO: Link elections to voter info
+        //Link elections to voter info
 
-        //TODO: Initiate recycler adapters
+        //Initiate recycler adapters
         val upcomingElectionAdapter = ElectionListAdapter(ElectionListener { election ->
             electionsViewModel.displayElectionDetails(election)
         })
-        //TODO: Populate recycler adapters
+        //Populate recycler adapters
         binding.electionRecyclerView.adapter = upcomingElectionAdapter
 
         val savedElectionAdapter = ElectionListAdapter(ElectionListener{ election ->
@@ -77,7 +77,4 @@ class ElectionsFragment: Fragment() {
         return binding.root
 
     }
-
-    //TODO: Refresh adapters when fragment loads
-
 }

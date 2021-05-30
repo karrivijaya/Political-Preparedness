@@ -35,7 +35,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="Upcoming Elections" />
 
-            <!-- TODO: Add Upcoming Election Recycler and Header -->
+            <!--  Add Upcoming Election Recycler and Header -->
             <ImageView
                 android:id="@+id/status_loading_wheel"
                 android:layout_width="@dimen/dimen_loading_wheel"
@@ -66,7 +66,7 @@
             android:layout_margin="@dimen/default_margin"
             android:padding="@dimen/default_padding">
 
-            <!-- TODO: Add Saved Election Recycler and Header -->
+            <!-- Add Saved Election Recycler and Header -->
             <TextView
                 android:id="@+id/tv_saved_elections"
                 style="@style/electionHeadingStyle"

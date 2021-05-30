@@ -132,13 +132,10 @@ class VoterInfoFragment : Fragment() {
             }
         }
 
-        //TODO: Handle save button UI state
-        //TODO: cont'd Handle save button clicks
-
         return binding.root
     }
 
-    //TODO: Create method to load URL intents
+    // Create method to load URL intents
 
     private fun loadUrl(url: String){
         val intent = Intent(Intent.ACTION_VIEW)

@@ -11,7 +11,7 @@ interface ElectionDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(election: Election)
 
-    //TODO: Add select all election query
+    //select all election query
     @Query("SELECT * FROM election_table")
     fun getAllElections():LiveData<List<Election>?>
 
@@ -22,7 +22,5 @@ interface ElectionDao {
     //delete query
     @Delete
     suspend fun deleteSelectedElection(election: Election)
-
-    //TODO: Add clear query
 
 }
